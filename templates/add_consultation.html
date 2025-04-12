@@ -2,7 +2,11 @@
 <div class="container">
 	<div class="w-50 m-auto">
 		<h4 class="mb-3">New Consultation Note for {{ patient.name }}</h4>
-		<form method="POST" enctype="multipart/form-data">
+		<form
+			method="POST"
+			enctype="multipart/form-data"
+			onsubmit="disableButton()"
+		>
 			<label for="consultNote" class="form-label">Consultation Note</label>
 			<textarea
 				class="form-control mb-3"
@@ -24,9 +28,23 @@
 				id="audioInp"
 			/>
 
-			<button class="w-100 btn btn-primary btn-lg mt-4" type="submit">
+			<button
+				class="w-100 btn btn-primary btn-lg mt-4"
+				id="consultation-submit"
+				type="submit"
+			>
 				Add Consultation Note
 			</button>
+
+			<div
+				class="alert alert-danger mt-3"
+				id="consultation-alert"
+				role="alert"
+				style="display: none"
+			>
+				The model may take some time to process the audio file. Please be
+				patient and don't refresh the page.
+			</div>
 		</form>
 	</div>
 </div>
