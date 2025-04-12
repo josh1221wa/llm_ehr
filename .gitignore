@@ -1,3 +1,7 @@
 *.wav
 tokens.env
 sample_text.txt
+
+static/uploads
+
+instance

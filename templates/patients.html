@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+	{% if patients %}
+	<h4 class="mb-3">View Patients</h4>
+	{% endif %}
+	<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+		{% for patient in patients %}
+		<div class="col">
+			<div class="card mb-4 rounded-3 shadow-sm">
+				<div class="card-header py-3">
+					<h4 class="my-0 fw-normal">{{ patient.name }}</h4>
+				</div>
+				<div class="card-body">
+					<a href="{{ url_for('patient_detail', patient_id=patient.id) }}">
+						<button type="button" class="w-100 btn btn-lg btn-outline-primary">
+							View Patient
+						</button>
+					</a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

@@ -1,5 +1,2 @@
-# LLM-EHR: Building an Electronic Health Record system with a built-in Language Model
+# LLM-EHR: Building an Electronic Health Record system with a linked Language Model
 
-## audio
-
-Audio sourced from https://github.com/babylonhealth/primock57

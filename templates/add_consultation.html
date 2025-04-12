@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+	<div class="w-50 m-auto">
+		<h4 class="mb-3">New Consultation Note for {{ patient.name }}</h4>
+		<form method="POST" enctype="multipart/form-data">
+			<label for="consultNote" class="form-label">Consultation Note</label>
+			<textarea
+				class="form-control mb-3"
+				name="note"
+				id="consultNote"
+				placeholder=""
+				value=""
+				required=""
+			></textarea>
+
+			<label for="audioInp" class="form-label"
+				>Upload Audio File (optional)</label
+			>
+			<input
+				type="file"
+				name="audio_file"
+				accept="audio/*"
+				class="form-control"
+				id="audioInp"
+			/>
+
+			<button class="w-100 btn btn-primary btn-lg mt-4" type="submit">
+				Add Consultation Note
+			</button>
+		</form>
+	</div>
+</div>
+{% endblock %}

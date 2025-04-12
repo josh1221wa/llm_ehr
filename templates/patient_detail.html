@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+	<div class="w-50 m-auto">
+		<h4 class="mb-3">Patient Profile</h4>
+		<form method="POST">
+			<label class="form-label"><b>Patient ID: {{ patient.id }}</b></label>
+			<br />
+			<label for="name" class="form-label">Name</label>
+			<input
+				type="text"
+				class="form-control mb-3"
+				name="name"
+				id="name"
+				placeholder="Enter patient's name"
+				value="{{ patient.name }}"
+				required=""
+			/>
+
+			<label for="address" class="form-label">Address</label>
+			<textarea
+				name="address"
+				id="address"
+				class="form-control mb-3"
+				placeholder="Enter patient's address"
+			>
+{{ patient.address }} </textarea
+			>
+
+			<label for="bloodgroup" class="form-label">Blood Group</label>
+			<input
+				type="text"
+				class="form-control mb-3"
+				name="blood_group"
+				id="blood_group"
+				placeholder="Enter patient's blood group"
+				value="{{ patient.blood_group }}"
+				required=""
+			/>
+
+			<button class="w-100 btn btn-primary btn-lg mt-4" type="submit">
+				Update Patient
+			</button>
+		</form>
+	</div>
+	<hr />
+	<h4 class="mb-3">Consultation Notes</h4>
+	<a
+		href="{{ url_for('new_consultation', patient_id=patient.id) }}"
+		class="btn btn-primary mb-3"
+		>Add New Consultation Note</a
+	>
+
+	<ul class="list-group mb-3">
+		{% for consult in patient.consultations %}
+		<li class="list-group-item">
+			<strong>{{ consult.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</strong>
+			<br />
+			<pre>{{ consult.note }}</pre>
+			{% if consult.audio_filename %}
+			<p>
+				Audio File:
+				<a
+					href="{{ url_for('static', filename='uploads/' ~ consult.audio_filename) }}"
+					>{{ consult.audio_filename }}</a
+				>
+			</p>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}
