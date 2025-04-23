@@ -132,6 +132,9 @@ def process_audio_note(audio_filename):
     prompt_template = """I will give you a transcription of an audio between a doctor and a patient. 
     Based on the transcript I want you to summarise the conversation in points. 
     Only return a maximum of 10 points and no other extra greeting or conclusion text.
+    
+    Make sure that you do not include the name of the patient or the doctor. 
+    Please refer to the patient as "the patient" and the doctor as "the doctor".
 
     The conversation is as follows: \n\n {{conversation}} \n\n"""
 
